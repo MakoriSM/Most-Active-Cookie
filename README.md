@@ -3,6 +3,11 @@
  Gets the most active cookie from a given day.
  
 ## Build instructions:
+
+**What you'll need**
+- Access to a command prompt.
+- [Maven 3.6.3 and above.](https://maven.apache.org/download.cgi)
+- [JDK 8 or later.](https://openjdk.java.net/install/)
  
 1. In main directory (containing pom.xml,README.md etc..) open a command prompt and type:
           
