@@ -135,3 +135,6 @@ buildNumber.properties
 .classpath
 
 # End of https://www.toptal.com/developers/gitignore/api/maven,intellij
+
+cookie_log.csv
+test_log.csv

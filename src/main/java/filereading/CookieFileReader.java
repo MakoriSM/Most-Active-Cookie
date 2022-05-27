@@ -4,6 +4,7 @@ import cookieclass.Cookie;
 import cookieclass.CookieCollection;
 
 import java.io.*;
+import java.net.URL;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -21,9 +22,12 @@ public class CookieFileReader {
      * @throws NullPointerException When file not found.
      * @throws IOException When file cannot be read.
      */
-    public CookieCollection readCookieFile(String filename) throws NullPointerException, IOException {
-        InputStream is = getClass().getClassLoader()
-                .getResourceAsStream(filename);
+    public CookieCollection readCookieFile(String filename) throws IOException {
+        //URL urlRelativePath = CookieFileReader.class.getClassLoader().getClass().getProtectionDomain()
+        //        .getCodeSource().getLocation();
+        //URL url = new URL(urlRelativePath,filename);
+        String path = "./" + filename;
+        InputStream is = new FileInputStream(path);
         String line;
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         CookieCollection cookieCollection = new CookieCollection();

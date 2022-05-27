@@ -8,7 +8,7 @@ import java.io.IOException;
 
 
 public class MostActiveCookie {
-    final private static String INPUTFORMAT = "java -jar most_active_cookie cookie_log.csv 2018-12-09";
+    final private static String INPUTFORMAT = "java -jar most_active_cookie.jar cookie_log.csv 2018-12-09";
 
 
     public static void main(String[] args) {
