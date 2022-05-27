@@ -1,5 +1,6 @@
+package cookieclass;
+
 import java.time.OffsetDateTime;
-import java.util.Comparator;
 
 public class Cookie implements Comparable<Cookie> {
 

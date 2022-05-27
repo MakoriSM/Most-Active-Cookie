@@ -1,3 +1,4 @@
+import inputhandling.InputHandler;
 import org.junit.Assert;
 import org.junit.Test;
 

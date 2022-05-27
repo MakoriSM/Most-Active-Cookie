@@ -1,6 +1,9 @@
+package filereading;
+
+import cookieclass.Cookie;
+import cookieclass.CookieCollection;
+
 import java.io.*;
-import java.net.URL;
-import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -13,7 +16,7 @@ public class CookieFileReader {
     private final String HEADER_STRING = "cookie,timestamp";
 
     /**
-     * Given a csv filename, reads a cookie log file and creates a collection of Cookie objects.
+     * Given a csv filename, reads a cookie log file and creates a collection of cookieclass.Cookie objects.
      * @param filename The name of the log file itself.
      * @throws NullPointerException When file not found.
      * @throws IOException When file cannot be read.
@@ -37,12 +40,12 @@ public class CookieFileReader {
                         throw new IllegalArgumentException("Incorrect number of values found on line.");
                     }
 
-                    DateTimeFormatter inputDateFormat = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
+                    DateTimeFormatter inputDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX");
                     OffsetDateTime lineDate = OffsetDateTime.parse(lineContents[1], inputDateFormat);
 
                     if (lineContents[0].length() != COOKIE_LENGTH) {
                         //Skip line if cookie string is of incorrect length.
-                        throw new IllegalArgumentException("Cookie string should be " + COOKIE_LENGTH +
+                        throw new IllegalArgumentException("cookieclass.Cookie string should be " + COOKIE_LENGTH +
                                 " characters long.");
                     }
 

@@ -8,7 +8,7 @@
     <artifactId>Most-Active-Cookie</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>Most Active Cookie</name>
+    <name>Most Active cookieclass.Cookie</name>
     <description>
         Demo project that gets most active cookie from a given log file of cookie, timestamp pairs
     </description>

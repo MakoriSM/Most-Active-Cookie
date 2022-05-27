@@ -1,3 +1,8 @@
+package inputhandling;
+
+import customexceptions.InvalidFilenameException;
+import logger.ProgramLogger;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -10,7 +15,7 @@ import java.util.logging.Logger;
 
 public class InputHandler {
     private String m_filename = null;
-    private LocalDate  inputDay = null;
+    private LocalDate inputDay = null;
 
 
 
