@@ -1,8 +1,12 @@
 package findingmostactivecookie;
 
+import cookieclass.Cookie;
 import cookieclass.CookieCollection;
+import logger.ProgramLogger;
 
 import java.time.LocalDate;
+import java.util.NoSuchElementException;
+import java.util.logging.Logger;
 
 public class FindMostActiveCookie {
 
@@ -16,16 +20,30 @@ public class FindMostActiveCookie {
         m_cookiesFromDay = cookiesFromDay;
     }
 
-    public void findCookiesFromDay(LocalDate inputDay, CookieCollection cookieCollection){
-        setCookiesFromDay(cookieCollection.get(inputDay));
-        System.out.println(getCookiesFromDay().toString());
+    public Boolean findCookiesFromDay(LocalDate inputDay, CookieCollection cookieCollection){
+        try {
+            setCookiesFromDay(cookieCollection.get(inputDay));
+            Logger logger = ProgramLogger.getLogger();
+            logger.info(getCookiesFromDay().toString());
+            return true;
+        }catch (NoSuchElementException e){
+            System.out.println(e);
+            return false;
+        }
+
     }
 
-    public void findMostActiveCookie(){
+    public String[] findMostActiveCookieValue(){
         try{
-            getCookiesFromDay().
-        }catch (NullPointerException e){
-            System.out.println("No cookies found from given date.");
+            CookieCollection cookiesFromDay = getCookiesFromDay();
+            if(cookiesFromDay == null){
+                throw new NoSuchElementException("No cookies given to look through");
+            }
+            String[] mostActiveCookie = cookiesFromDay.getMostActiveCookies();
+            return mostActiveCookie;
+        }catch (NoSuchElementException e){
+            System.out.println(e);
+            return null;
         }
     }
 }

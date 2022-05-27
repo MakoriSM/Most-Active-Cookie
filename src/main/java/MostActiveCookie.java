@@ -7,7 +7,7 @@ public class MostActiveCookie {
 
 
     public static void main(String[] args) {
-        new ProgramLogger();
+        ProgramLogger.setProgramLogger();
         try {
             new InputHandler(args);
         }

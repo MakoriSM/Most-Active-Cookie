@@ -4,19 +4,21 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static logger.ProgramLogger.setLogger;
+
 public class ProgramLogger {
 
-    private static Logger m_logger = Logger.getLogger( Logger.GLOBAL_LOGGER_NAME);
+    private static Logger LOGGER = Logger.getLogger( Logger.GLOBAL_LOGGER_NAME);
 
-    public void setLogger(Logger logger) {
-        m_logger = logger;
+    public static void setLogger(Logger logger) {
+        LOGGER = logger;
     }
 
     public static Logger getLogger(){
-        return m_logger;
+        return LOGGER;
     }
 
-    public ProgramLogger() {
+    public static void setProgramLogger() {
         Logger logger = Logger.getLogger( Logger.GLOBAL_LOGGER_NAME);
         ConsoleHandler ch = new ConsoleHandler();
         ch.setLevel(Level.INFO);
