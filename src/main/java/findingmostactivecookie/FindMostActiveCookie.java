@@ -1,6 +1,5 @@
 package findingmostactivecookie;
 
-import cookieclass.Cookie;
 import cookieclass.CookieCollection;
 import logger.ProgramLogger;
 
@@ -20,7 +19,7 @@ public class FindMostActiveCookie {
         m_cookiesFromDay = cookiesFromDay;
     }
 
-    public Boolean findCookiesFromDay(LocalDate inputDay, CookieCollection cookieCollection){
+    public Boolean findAllCookiesFromDay(LocalDate inputDay, CookieCollection cookieCollection){
         try {
             setCookiesFromDay(cookieCollection.get(inputDay));
             Logger logger = ProgramLogger.getLogger();
@@ -33,7 +32,7 @@ public class FindMostActiveCookie {
 
     }
 
-    public String[] findMostActiveCookieValue(){
+    public String[] findMostActiveCookies(){
         try{
             CookieCollection cookiesFromDay = getCookiesFromDay();
             if(cookiesFromDay == null){

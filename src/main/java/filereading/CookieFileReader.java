@@ -27,13 +27,14 @@ public class CookieFileReader {
         String line;
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         CookieCollection cookieCollection = new CookieCollection();
-        while((line = reader.readLine()) != null){
+        try {
+            while ((line = reader.readLine()) != null) {
 
-            if(line.equals(HEADER_STRING)){
-                continue;
-            }
+                if (line.equals(HEADER_STRING)) {
+                    continue;
+                }
 
-            try {
+                try {
                     String[] lineContents = line.split(","); //split up line contents
 
                     if (lineContents.length != 2) { //Skip line if incorrect number of values found.
@@ -57,16 +58,19 @@ public class CookieFileReader {
                         throw new IllegalArgumentException("Special characters are not valid in cookie string.");
                     }
 
-                cookieCollection.add(new Cookie(lineContents[0],lineDate));
+                    cookieCollection.add(new Cookie(lineContents[0], lineDate));
 
+                } catch (IllegalArgumentException e) {
+                    //Just print the illegal argument exception for that line.
+                    System.out.println(e);
+                } catch (DateTimeParseException e) {
+                    System.out.println("Invalid date given: " + e);
+                }
             }
-            catch (IllegalArgumentException e){
-                //Just print the illegal argument exception for that line.
-                System.out.println(e);
-            }
-            catch (DateTimeParseException e) {
-                System.out.println("Invalid date given: " + e);
-            }
+        }catch (IOException e){
+            throw new IOException(e);
+        }finally {
+            reader.close();
         }
         return cookieCollection;
     }

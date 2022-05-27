@@ -25,11 +25,35 @@
     </dependencies>
 
     <build>
+
+        <!-- To use the plugin goals in your POM or parent POM -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                        <archive>
+                            <manifest>
+                                <addClasspath>true</addClasspath>
+                                <mainClass>MostActiveCookie</mainClass>
+                            </manifest>
+                        </archive>
+                </configuration>
+            </plugin>
+
+        </plugins>
     <resources>
         <resource>
             <directory>src/main/resources</directory>
         </resource>
     </resources>
+    <testResources>
+        <testResource>
+            <directory>/src/test/resources</directory>
+        </testResource>
+    </testResources>
+    <finalName>most_active_cookie</finalName>
     </build>
 
     <properties>

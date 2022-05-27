@@ -3,12 +3,10 @@ package findingmostactivecookie;
 import cookieclass.Cookie;
 import cookieclass.CookieCollection;
 import org.junit.Test;
-import org.junit.runners.Parameterized;
 
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;
 
@@ -38,8 +36,8 @@ public class FindMostActiveCookieTest {
         cookieCollection.add(new Cookie("4sMM2LxV07bPJzwf",OffsetDateTime.parse(
                 "2018-12-07T23:30:00+00:00", inputDateFormat)));
         FindMostActiveCookie activeCookieFinder = new FindMostActiveCookie();
-        activeCookieFinder.findCookiesFromDay(date,cookieCollection);
-        assertEquals("AtY0laUfhglK3lC7",activeCookieFinder.findMostActiveCookieValue()[0]);
+        activeCookieFinder.findAllCookiesFromDay(date,cookieCollection);
+        assertEquals("AtY0laUfhglK3lC7",activeCookieFinder.findMostActiveCookies()[0]);
     }
 
     @Test
@@ -65,9 +63,9 @@ public class FindMostActiveCookieTest {
         cookieCollection.add(new Cookie("4sMM2LxV07bPJzwf",OffsetDateTime.parse(
                 "2018-12-07T23:30:00+00:00", inputDateFormat)));
         FindMostActiveCookie activeCookieFinder = new FindMostActiveCookie();
-        activeCookieFinder.findCookiesFromDay(date,cookieCollection);
-        assertEquals("AtY0laUfhglK3lC7",activeCookieFinder.findMostActiveCookieValue()[0]);
-        assertEquals("SAZuXPGUrfbcn5UA",activeCookieFinder.findMostActiveCookieValue()[1]);
+        activeCookieFinder.findAllCookiesFromDay(date,cookieCollection);
+        assertEquals("AtY0laUfhglK3lC7",activeCookieFinder.findMostActiveCookies()[0]);
+        assertEquals("SAZuXPGUrfbcn5UA",activeCookieFinder.findMostActiveCookies()[1]);
     }
 
     @Test
@@ -93,13 +91,13 @@ public class FindMostActiveCookieTest {
         cookieCollection.add(new Cookie("4sMM2LxV07bPJzwf",OffsetDateTime.parse(
                 "2018-12-07T23:30:00+00:00", inputDateFormat)));
         FindMostActiveCookie activeCookieFinder = new FindMostActiveCookie();
-        assertEquals(false,activeCookieFinder.findCookiesFromDay(date,cookieCollection));
+        assertEquals(false,activeCookieFinder.findAllCookiesFromDay(date,cookieCollection));
     }
 
     @Test
     public void findMostActiveCookieOnNoCookies() {
         FindMostActiveCookie activeCookieFinder = new FindMostActiveCookie();
-        assertNull(activeCookieFinder.findMostActiveCookieValue());
+        assertNull(activeCookieFinder.findMostActiveCookies());
     }
 
 }

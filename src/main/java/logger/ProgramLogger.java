@@ -1,6 +1,7 @@
 package logger;
 
 import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,10 +20,8 @@ public class ProgramLogger {
     }
 
     public static void setProgramLogger() {
-        Logger logger = Logger.getLogger( Logger.GLOBAL_LOGGER_NAME);
-        ConsoleHandler ch = new ConsoleHandler();
-        ch.setLevel(Level.INFO);
-        logger.addHandler(ch);
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.setLevel(Level.SEVERE);
         setLogger(logger);
     }
 

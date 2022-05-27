@@ -18,12 +18,12 @@ public class CookieFileReaderTest {
                 "5UAVanZf6UtGyKVS,2018-12-09T07:25:00+0000, AtY0laUfhglK3lC7,2018-12-09T06:19:00+0000, SAZuXPGUrfbcn5UA," +
                 "2018-12-08T22:03:00+0000, 4sMM2LxV07bPJzwf,2018-12-08T21:30:00+0000, " +
                 "fbcn5UAVanZf6UtG,2018-12-08T09:30:00+0000, 4sMM2LxV07bPJzwf,2018-12-07T23:30:00+0000]";
-        String filename = "cookie_log.csv";
+        String filename = "test_log.csv";
         URL url = this.getClass().getResource(filename);
         CookieCollection cookieCollection = cfr.readCookieFile(filename);
-        Collections.sort(cookieCollection,Collections.reverseOrder());
+        cookieCollection.sort(Collections.reverseOrder());
         assertEquals(expectedString,cookieCollection.toString());
-        System.out.println(cookieCollection.toString());
+        System.out.println(cookieCollection);
     }
 
     @Test
