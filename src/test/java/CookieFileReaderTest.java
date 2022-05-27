@@ -19,4 +19,5 @@ public class CookieFileReaderTest {
         assertThrows(NullPointerException.class,() -> cfr.readCookieFile("null.csv"));
         System.out.println("File not found");
     }
+
 }

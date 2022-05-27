@@ -12,11 +12,18 @@ public class CookieFileReader {
     private final int COOKIE_LENGTH = 16;
     private final String HEADER_STRING = "cookie,timestamp";
 
-    public void readCookieFile(String filename) throws NullPointerException, IOException {
+    /**
+     * Given a csv filename, reads a cookie log file and creates a collection of Cookie objects.
+     * @param filename The name of the log file itself.
+     * @throws NullPointerException When file not found.
+     * @throws IOException When file cannot be read.
+     */
+    public CookieCollection readCookieFile(String filename) throws NullPointerException, IOException {
         InputStream is = getClass().getClassLoader()
                 .getResourceAsStream(filename);
         String line;
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        CookieCollection cookieCollection = new CookieCollection();
         while((line = reader.readLine()) != null){
 
             if(line.equals(HEADER_STRING)){
@@ -47,6 +54,8 @@ public class CookieFileReader {
                         throw new IllegalArgumentException("Special characters are not valid in cookie string.");
                     }
 
+                cookieCollection.add(new Cookie(lineContents[0],lineDate));
+
             }
             catch (IllegalArgumentException e){
                 //Just print the illegal argument exception for that line.
@@ -56,5 +65,6 @@ public class CookieFileReader {
                 System.out.println("Invalid date given: " + e);
             }
         }
+        return cookieCollection;
     }
 }
