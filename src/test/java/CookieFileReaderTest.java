@@ -1,13 +1,14 @@
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import static org.junit.Assert.*;
 
 public class CookieFileReaderTest {
 
     @Test
-    public void readExistingCookieFile() throws FileNotFoundException {
+    public void readExistingCookieFile() throws IOException {
         CookieFileReader cfr = new CookieFileReader();
         cfr.readCookieFile("cookie_log.csv");
     }
